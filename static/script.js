@@ -4,8 +4,8 @@ function drawTextOnCanvas(canvas, text) {
   
     const ctx = canvas.getContext("2d");
     ctx.font = "28px sans-serif";
-    ctx.fillStyle = "#ffffff";  // White text
-    ctx.strokeStyle = "#000000"; // Black outline
+    ctx.fillStyle = "#ffffff";  
+    ctx.strokeStyle = "#000000"; 
     ctx.lineWidth = 3;
   
     // Position near top-left
@@ -25,9 +25,7 @@ function drawTextOnCanvas(canvas, text) {
     const canvas = document.getElementById("memeCanvas");
     const errorMsg = document.getElementById("errorMsg");
   
-    /**
-     * Handle Generate Meme button
-     */
+   
     generateBtn.addEventListener("click", async () => {
       errorMsg.textContent = ""; // Clear any old errors
       const promptValue = promptInput.value.trim();
@@ -38,12 +36,12 @@ function drawTextOnCanvas(canvas, text) {
         return;
       }
   
-      // Disable button, show "Generating..."
+    
       generateBtn.disabled = true;
       generateBtn.textContent = "Generating...";
   
       try {
-        // 1) Send the prompt (and overlay text) to our Flask backend
+        //  Send the prompt (and overlay text) to  Flask backend
         const response = await fetch("/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -56,7 +54,7 @@ function drawTextOnCanvas(canvas, text) {
           throw new Error(errData.error || "Server error");
         }
   
-        // 2) Parse JSON
+       
         const data = await response.json();
         if (data.error) {
           throw new Error(data.error);
@@ -66,7 +64,7 @@ function drawTextOnCanvas(canvas, text) {
           throw new Error("No image was returned by the server.");
         }
   
-        // 3) Convert base64 -> Blob -> Object URL -> Load into <canvas>
+        
         const base64Response = await fetch(`data:image/png;base64,${data.image}`);
         const blob = await base64Response.blob();
         const img = new Image();
@@ -77,7 +75,7 @@ function drawTextOnCanvas(canvas, text) {
           canvas.width = img.width;
           canvas.height = img.height;
   
-          // Draw the image
+          // Draw
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0);
   
