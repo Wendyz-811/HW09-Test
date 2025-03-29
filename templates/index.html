@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Meme Generator</title>
+  <!-- Flask can serve static files from the 'static' folder using url_for('static', ...) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Meme Generator</h1>
+
+    <div class="input-section">
+      <label for="prompt">Meme Prompt:</label>
+      <input type="text" id="prompt" placeholder="e.g. Astronaut riding a horse" />
+
+      <label for="overlayText">Overlay Text (optional):</label>
+      <input type="text" id="overlayText" placeholder="e.g. Monday vibes..." />
+
+      <button id="generateBtn">Generate Meme</button>
+    </div>
+
+    <div class="output-section">
+      <h2>Generated Meme</h2>
+      <canvas id="memeCanvas"></canvas>
+      <div id="errorMsg"></div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
