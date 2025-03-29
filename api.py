@@ -7,7 +7,7 @@ app = Flask(__name__)  # 初始化 Flask 应用
 
 # i put my hugging face model here. And I copied my access token.
 API_URL = "https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-dev"
-HF_TOKEN = "UPDATE YOUR TOKEN HERE" 
+HF_TOKEN = os.getenv("HF_TOKEN")
 
 # 主页路由，渲染 index.html（放在 templates 文件夹里）
 @app.route('/')
