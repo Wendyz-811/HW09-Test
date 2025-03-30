@@ -8,7 +8,7 @@ function drawTextOnCanvas(canvas, text) {
     ctx.strokeStyle = "#000000"; 
     ctx.lineWidth = 3;
   
-    // Position near top-left
+
     const x = 20;
     const y = 40;
   
@@ -41,7 +41,7 @@ function drawTextOnCanvas(canvas, text) {
       generateBtn.textContent = "Generating...";
   
       try {
-        //  Send the prompt (and overlay text) to  Flask backend
+        //  Send the prompt to  Flask backend
         const response = await fetch("/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -84,7 +84,7 @@ function drawTextOnCanvas(canvas, text) {
             drawTextOnCanvas(canvas, overlayValue);
           }
   
-          // Clean up
+        
           URL.revokeObjectURL(blobURL);
         };
         img.src = blobURL;

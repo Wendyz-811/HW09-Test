@@ -36,27 +36,18 @@ def generate():
     }
 
     try:
-        print("🔍 接收到 prompt:", prompt)
-        print("🔁 正在请求 Hugging Face 模型...")
+
 
         response = requests.post(API_URL, headers=headers, json=payload, timeout=300)
-
-        print("✅ 模型返回状态码:", response.status_code)
-        print("📦 Content-Type:", response.headers.get("Content-Type"))
         
-        # 如果返回的是图片
         if response.status_code == 200 and "image" in response.headers.get("Content-Type", ""):
             b64_image = base64.b64encode(response.content).decode('utf-8')
             return jsonify({"image": b64_image})
         else:
-            # 模型返回的是错误信息，尝试打印出来
-            print("❌ 模型错误内容:", response.text)
             return jsonify({"error": response.text}), response.status_code
 
     except Exception as e:
-        print("❗程序异常:", str(e))
         return jsonify({"error": str(e)}), 500
 
-# 启动服务器，绑定端口 5050，开启调试模式
 if __name__ == '__main__':
-    app.run(debug=True, port=5005)
+    app.run(debug=True, port=5007)
