@@ -27,7 +27,7 @@ def generate():
     overlay_text = data.get('overlayText', '')
 
     headers = {
-        "Authorization": f"Bearer {HF_TOKEN}",
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json"
     }
 
@@ -50,4 +50,4 @@ def generate():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5007)
+    app.run(debug=True, port=5010)
