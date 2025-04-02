@@ -27,7 +27,7 @@ def generate():
     overlay_text = data.get('overlayText', '')
 
     headers = {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer yourtoken",
         "Content-Type": "application/json"
     }
 
